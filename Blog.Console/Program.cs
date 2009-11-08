@@ -1,13 +1,6 @@
 using System;
-using System.Collections;
-using System.Diagnostics;
-using System.IO;
-using HibernatingRhinos.NHibernate.Profiler.Appender;
 using NHibernate;
 using NHibernate.Cfg;
-using NHibernate.Dialect;
-using NHibernate.Dialect.Function;
-using NHibernate.Tool.hbm2ddl;
 
 namespace Blog.Console
 {
@@ -22,9 +15,6 @@ namespace Blog.Console
                 ISessionFactory sessionFactory = configuration
                     .BuildSessionFactory();
                 //new SchemaExport(configuration).Create(true, true);
-                
-               
-
                
             }
             catch (Exception ex)
