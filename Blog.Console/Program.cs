@@ -58,9 +58,16 @@ namespace Blog.Console
                     // will return false
                     ReferenceEquals(anotherUser, post.User);
 
-                    // opps, user instance with the same id but with different
-                    // reference was detected
-                    session.SaveOrUpdate(post);
+                    // will merge the detached entity into the session
+                    // creating NEW entity instance or re-using the one
+                    // that is already in the session
+                    var mergedPost = (Post)session.Merge(post);
+
+                    // will return false 
+                    ReferenceEquals(mergedPost, post);
+
+                    // will return true
+                    ReferenceEquals(anotherUser, mergedPost.User);
 
                     tx.Commit();
                 }
